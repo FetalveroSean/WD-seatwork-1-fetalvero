@@ -5,6 +5,7 @@ This is a simple static webpage built using HTML and CSS. It showcases a persona
 css
 Copy
 Edit
+
 📦 project-root
 ├── assets
 │   └── img
@@ -15,6 +16,7 @@ Edit
 │       └── download (1).jpeg
 ├── index.html
 └── README.md
+
 🌐 Features
 Header & Footer Styling: Each section uses a different background color and layout, demonstrating multiple styling approaches using grid, flexbox, and linear-gradient.
 

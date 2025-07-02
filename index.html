@@ -1,167 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TASK</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoomable Album Layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #d4edda;
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background: #f2f2f2;
     }
 
-    .header, .footer {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 10px 20px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sonder {
-      width: 150px;
-      height: 150px;
+    img.sonder {
+      width: 90px;
+      height: 90px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease;
     }
 
-    /* All right-groups aligned right */
-    .right-group1,
-    .right-group2,
-    .right-group3,
-    .right-group4,
-    .right-group5 {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 50px;
-      font-size: 16px;
-    }
-
-    /* Menu styles */
-    .Menu, .menu2, .menu3, .menu4, .menu5 {
-      display: flex;
-      gap: 50px;
-    }
-
-    .Menu a,
-    .menu2 a,
-    .menu3 a,
-    .menu4 a,
-    .menu5 a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 16px;
-      transition: transform 0.3s ease, font-size 0.3s ease;
-    }
-
-    .Menu a:hover {
-      text-shadow: rgb(15, 13, 11) 1px 0 10px;
-    }
-
-    .menu2 a:hover,
-    .menu3 a:hover,
-    .menu4 a:hover,
-    .menu5 a:hover {
+    img.sonder:hover {
       transform: scale(1.2);
-      text-shadow: rgb(15, 13, 11) 1px 0 10px;
     }
 
-    /* Header/Footer styles */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2, h3 {
+      margin: 0;
+    }
+
+    /* ======= HEADER 1 ======= */
     .header1 {
-      background: linear-gradient(to bottom, #f5d313, #cf8618);
-      color: black;
-      font-size: 22px;
+      background: linear-gradient(to right, #f5d313, #ff9900);
+      color: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+    }
+
+    .header1 .button-menu {
+      display: flex;
+      gap: 12px;
+    }
+
+    .header1 button {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .header1 button:hover {
+      background-color: #333;
     }
 
     .footer1 {
-      background: linear-gradient(to bottom, #000000, #363a3d);
-      color: white;
-      text-align: start;
+      background: #111;
+      color: #fff;
+      text-align: center;
       padding: 15px;
-      font-size: 0.9rem;
-      margin-bottom: 40px;
     }
 
-    .button-menu button {
-        background-color: #000000; /* yellow background */
-        color: #ffffff;            /* black text */
-        border: none;
-        padding: 10px 18px;
-        font-weight: bold;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-}
+    /* ======= HEADER 2 ======= */
     .header2 {
-      background: #770a72;
-
-      color: rgb(0, 0, 0);
-
+      background: #6a0572;
       color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
+    .menu2 {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu2 a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .menu2 a:hover {
+      color: #ffd700;
     }
 
     .footer2 {
-      background: linear-gradient(to bottom, #000000, #363a3d);
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80px;
-      margin-bottom: 40px;
+      background: #222;
+      color: #ccc;
+      padding: 15px;
+      text-align: left;
+      font-style: italic;
     }
 
+    /* ======= HEADER 3 ======= */
     .header3 {
-      background: #28a752;
-      color: #000000;
+      background: #1e1e1e;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    .menu3 {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .menu3 a {
+      background: #28a745;
+      padding: 8px 14px;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .menu3 a:hover {
+      background: #1b7d42;
     }
 
     .footer3 {
-      background: linear-gradient(to bottom, #000000, #363a3d);
-      color: #d4edda;
+      background: #121212;
+      color: #28a745;
       padding: 10px;
-      text-align: center;
-      justify-content: center;
-      margin-bottom: 40px;
-      display: block;
+      text-align: right;
     }
 
+    /* ======= HEADER 4 ======= */
     .header4 {
       background: #f6ca0a;
-      color: #000000;
+      padding: 20px;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .menu4 {
+      margin-top: 10px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu4 a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .menu4 a:hover {
+      background: #000;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
     }
 
     .footer4 {
-      background: linear-gradient(to bottom, #000000, #363a3d);
-      color: #d4edda;
-      padding: 10px;
+      background: #000;
+      color: #f6ca0a;
       text-align: center;
-      justify-content: center;
-      margin-bottom: 40px;
-      display: block;
+      font-family: monospace;
+      padding: 12px;
     }
 
+    /* ======= HEADER 5 ======= */
     .header5 {
-      background: #054b71;
-      color: #000000;
+      background: linear-gradient(to right, #054b71, #0b94d3);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+    }
+
+    .menu5 {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu5 a {
+      color: white;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .menu5 a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -2px;
+      background-color: white;
+      transition: 0.3s ease;
+    }
+
+    .menu5 a:hover::after {
+      width: 100%;
     }
 
     .footer5 {
-      background: linear-gradient(to bottom, #000000, #363a3d);
-      color: #d4edda;
-      padding: 10px;
+      background: #032636;
+      color: #cceeff;
       text-align: center;
-      justify-content: center;
-      display: block;
+      padding: 12px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -169,115 +225,96 @@
 
 <!-- SECTION 1 -->
 <section>
-  <header class="header header1">
+  <header class="header1">
     <div class="logo">
       <img src="./assets/img/images.webp" class="sonder" alt="Sonder Logo">
       <h2>SEAN</h2>
     </div>
-        <div class="right-group right-group1">
-         <div class="button-menu">
-            <button>Home</button>
-            <button>About</button>
-            <button>Contact</button>
-            <button>Sign Up</button>
-            <button>Login</button>
-</div>
+    <div class="button-menu">
+      <button>Home</button>
+      <button>About</button>
+      <button>Contact</button>
+      <button>Sign Up</button>
+      <button>Login</button>
     </div>
   </header>
-
-  <footer class="footer footer1">
+  <footer class="footer1">
     <h3>Sean Kyle Fetalvero | TC05</h3>
   </footer>
 </section>
 
 <!-- SECTION 2 -->
 <section>
-  <header class="header header2">
+  <header class="header2">
     <div class="logo">
       <img src="./assets/img/images.jpeg" class="sonder" alt="Best Albums">
       <h2>Best Album</h2>
     </div>
-    <div class="right-group right-group2">
-      <nav class="menu2">
-        <a href="#">Drake</a>
-        <a href="#">Sonder</a>
-        <a href="#">Sza</a>
-        <a href="#">Travis</a>
-        <a href="#">Tecca</a>
-      </nav>
-    </div>
+    <nav class="menu2">
+      <a href="#">Drake</a>
+      <a href="#">Sonder</a>
+      <a href="#">Sza</a>
+      <a href="#">Travis</a>
+      <a href="#">Tecca</a>
+    </nav>
   </header>
-
-  <footer class="footer footer2">
+  <footer class="footer2">
     <h3>Best albums from the best artists</h3>
   </footer>
 </section>
 
 <!-- SECTION 3 -->
 <section>
-  <header class="header header3">
-    <div class="logo">
-      <img src="./assets/img/download.jpeg" class="sonder" alt="Take Care">
-      <h2>Take Care by Drake</h2>
-    </div>
-    <div class="right-group right-group3">
-      <nav class="menu3">
-        <a href="#">Marvin's Room</a>
-        <a href="#">Headlines</a>
-        <a href="#">Crew Love</a>
-        <a href="#">HYFR</a>
-        <a href="#">The Motto</a>
-      </nav>
-    </div>
+  <header class="header3">
+    <img src="./assets/img/download.jpeg" class="sonder" alt="Take Care">
+    <h2>Take Care by Drake</h2>
+    <nav class="menu3">
+      <a href="#">Marvin's Room</a>
+      <a href="#">Headlines</a>
+      <a href="#">Crew Love</a>
+      <a href="#">HYFR</a>
+      <a href="#">The Motto</a>
+    </nav>
   </header>
-
-  <footer class="footer footer3">
+  <footer class="footer3">
     <h3>Best songs of Take Care</h3>
   </footer>
 </section>
 
 <!-- SECTION 4 -->
 <section>
-  <header class="header header4">
-    <div class="logo">
-      <img src="./assets/img/0x1900-000000-80-0-0.jpg" class="sonder" alt="Into">
-      <h2>Into by Sonder</h2>
-    </div>
-    <div class="right-group right-group4">
-      <nav class="menu4">
-        <a href="#">Too Fast</a>
-        <a href="#">Care</a>
-        <a href="#">Lovely</a>
-        <a href="#">Sirens</a>
-        <a href="#">Feel</a>
-      </nav>
-    </div>
+  <header class="header4">
+    <img src="./assets/img/0x1900-000000-80-0-0.jpg" class="sonder" alt="Into">
+    <h2>Into by Sonder</h2>
+    <nav class="menu4">
+      <a href="#">Too Fast</a>
+      <a href="#">Care</a>
+      <a href="#">Lovely</a>
+      <a href="#">Sirens</a>
+      <a href="#">Feel</a>
+    </nav>
   </header>
-
-  <footer class="footer footer4">
+  <footer class="footer4">
     <h3>Best songs of Into</h3>
   </footer>
 </section>
 
 <!-- SECTION 5 -->
 <section>
-  <header class="header header5">
+  <header class="header5">
     <div class="logo">
       <img src="./assets/img/download (1).jpeg" class="sonder" alt="SOS by SZA">
       <h2>SOS by SZA</h2>
     </div>
-    <div class="right-group right-group5">
-      <nav class="menu5">
-        <a href="#">Nobody Gets Me</a>
-        <a href="#">Kill Bill</a>
-        <a href="#">Low</a>
-        <a href="#">Far</a>
-        <a href="#">Good Days</a>
-      </nav>
-    </div>
+    <nav class="menu5">
+      <a href="#">Nobody Gets Me</a>
+      <a href="#">Kill Bill</a>
+      <a href="#">Low</a>
+      <a href="#">Far</a>
+      <a href="#">Good Days</a>
+    </nav>
   </header>
-
-  <footer class="footer footer5">
+  <footer class="footer5">
     <h3>Best songs of SOS</h3>
   </footer>
 </section>
